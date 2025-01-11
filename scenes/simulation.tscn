@@ -1,0 +1,62 @@
+[gd_scene load_steps=12 format=3 uid="uid://yq646k1lueot"]
+
+[ext_resource type="Script" path="res://scripts/simulation.gd" id="1_8ml8v"]
+[ext_resource type="Script" path="res://scripts/scatterable.gd" id="2_fatmv"]
+[ext_resource type="Script" path="res://scripts/scatter.gd" id="2_fishg"]
+[ext_resource type="Script" path="res://addons/debug_camera/scripts/DebugCamera3D.gd" id="2_t2vxd"]
+[ext_resource type="PackedScene" uid="uid://bj5m8stbwmfoq" path="res://scenes/apple.tscn" id="6_7ifbk"]
+[ext_resource type="PackedScene" uid="uid://bgt5rmiwy0oyw" path="res://scenes/blob.tscn" id="7_7qthe"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_f0e0c"]
+sky_top_color = Color(0.212882, 0.354752, 0.580009, 1)
+sky_horizon_color = Color(0.884636, 0.915135, 1, 1)
+ground_bottom_color = Color(5.65536e-07, 0.41673, 0.171633, 1)
+ground_horizon_color = Color(0.521477, 0.735857, 7.70092e-07, 1)
+
+[sub_resource type="Sky" id="Sky_dfvx0"]
+sky_material = SubResource("ProceduralSkyMaterial_f0e0c")
+
+[sub_resource type="Environment" id="Environment_x231a"]
+background_mode = 2
+sky = SubResource("Sky_dfvx0")
+ambient_light_color = Color(1, 1, 1, 1)
+ambient_light_energy = 16.0
+
+[sub_resource type="Resource" id="Resource_mhie5"]
+script = ExtResource("2_fatmv")
+scene = ExtResource("7_7qthe")
+name = "Blob"
+initial_count = 30
+per_second_count = 0
+
+[sub_resource type="Resource" id="Resource_ddy8e"]
+script = ExtResource("2_fatmv")
+scene = ExtResource("6_7ifbk")
+name = "Apple"
+initial_count = 60
+per_second_count = 4
+
+[node name="Simulation" type="Node3D"]
+script = ExtResource("1_8ml8v")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.872854, 0.487982, 0, -0.487982, 0.872854, 0, 5.85465, 10.0814)
+environment = SubResource("Environment_x231a")
+fov = 100.0
+script = ExtResource("2_t2vxd")
+default_velocity = 10.0
+speed_scale = 2.0
+boost_speed_multiplier = 5.0
+max_speed = 5000.0
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 19.8101, 0)
+light_energy = 10.461
+light_indirect_energy = 3.365
+light_volumetric_fog_energy = 3.783
+omni_range = 4096.0
+
+[node name="Environment" type="Node3D" parent="."]
+script = ExtResource("2_fishg")
+scatter_range = 100
+scatter_items = Array[ExtResource("2_fatmv")]([SubResource("Resource_mhie5"), SubResource("Resource_ddy8e")])

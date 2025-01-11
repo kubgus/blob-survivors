@@ -1,0 +1,43 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+[application]
+
+config/name="Blob Survivors"
+config/name_localized={
+"sk": "Bloboví Preživší"
+}
+config/description="Credits:
+- Jakub \"kubgus\" Gustafik (everything)
+- Tomas Lences (apple model)"
+config/version="1.0.1"
+run/main_scene="res://scenes/simulation.tscn"
+config/features=PackedStringArray("4.3", "Forward Plus")
+boot_splash/bg_color=Color(0.0754016, 0.0754016, 0.0754016, 1)
+boot_splash/image="res://icon.png"
+config/icon="res://icon.png"
+config/windows_native_icon="res://icon.ico"
+
+[display]
+
+window/size/viewport_width=1920
+window/size/viewport_height=1080
+window/size/mode=2
+
+[global_group]
+
+food=""
+blob=""
+
+[rendering]
+
+textures/vram_compression/import_s3tc_bptc=true
+textures/vram_compression/import_etc2_astc=true
+anti_aliasing/quality/msaa_3d=1

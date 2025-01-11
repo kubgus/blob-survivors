@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://dwjx80hrqpsjo"]
+
+[ext_resource type="PackedScene" uid="uid://dxglxp77d0gwa" path="res://models/blob/blob.fbx" id="1_3f3wf"]
+
+[sub_resource type="GDScript" id="GDScript_6b32s"]
+script/source = "extends Node3D
+
+func change_mat(material: Material):
+	$Mball.set_surface_override_material(0, material)
+"
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a8v2c"]
+albedo_color = Color(0.2275, 0.398125, 0.91, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qhkb7"]
+albedo_color = Color(0.150075, 0.150075, 0.150075, 1)
+
+[node name="BlobModel" instance=ExtResource("1_3f3wf")]
+script = SubResource("GDScript_6b32s")
+
+[node name="Mball" parent="." index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_a8v2c")
+
+[node name="Sphere" parent="." index="2"]
+surface_material_override/0 = SubResource("StandardMaterial3D_qhkb7")
+
+[node name="Sphere_001" parent="." index="3"]
+surface_material_override/0 = SubResource("StandardMaterial3D_qhkb7")

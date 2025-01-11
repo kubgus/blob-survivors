@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://bj5m8stbwmfoq"]
+
+[ext_resource type="PackedScene" uid="uid://dolvqxyqtculv" path="res://models/apple/apple.fbx" id="1_cjsrb"]
+[ext_resource type="Script" path="res://scripts/apple.gd" id="1_yepby"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_2jggo"]
+radius = 0.856
+
+[node name="Apple" type="StaticBody3D" groups=["food"]]
+script = ExtResource("1_yepby")
+
+[node name="AppleModel" parent="." instance=ExtResource("1_cjsrb")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_2jggo")
+
+[node name="Labels" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.30459, 0)
+
+[node name="NameLabel" type="Label3D" parent="Labels"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+text = "Name"
+font_size = 90
