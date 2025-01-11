@@ -10,6 +10,11 @@ Simple evolution game about blobs made in Godot.
 - <kbd>⬇</kbd> - Slow down time
 - <kbd>Esc</kbd> - Quit
 
+## Instructions 📰
+
+- Release build contains example values
+- If you want to modify the runtime values, clone the repo and open the project with Godot
+
 ## Screenshots 🖼️
 
 ![1736637664](https://github.com/user-attachments/assets/099de146-4374-4135-8b05-5ab0a0cebc55)
